@@ -1,4 +1,6 @@
-# rekobot functions
+# rekobot
+
+Lamba functions for converting raw travel expense data (coming from a frontend of your choice) into a well formatted and signed PDF file (work in progress).
 
 * expense: turns a travel expense json into a properly formatted pdf preview
 
@@ -15,6 +17,8 @@
     - Header 'Accept' = 'application/pdf'
     - Body: copy contents of [expense-example-data.json](./expense-example-data.json)
 
+In order to avoid unnecessary charges, you should remove all unused AWS ressources by running `serverless remove` after your tests.
+
 ## TODO
 
 * full data model usage
@@ -22,6 +26,8 @@
 * template styling
 * input validation
 * signing the pdf
+* raise expense id before signing and persist it
+* add Authentification with Cognito
 * switch to TypeScript
 * send mail with pdf attached
 * add rekobot logo
