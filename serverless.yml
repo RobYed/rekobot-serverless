@@ -5,10 +5,35 @@ provider:
   runtime: nodejs8.10
   stage: dev
   region: eu-west-1
+  environment:
+    PAGE_LOAD_TIMEOUT: 20000
+    LOGGING: true
+
+plugins:
+  - serverless-plugin-chrome
+
+custom:
+  chrome:
+    flags:
+      - --window-size=1280,1696 # Letter size
+      - --hide-scrollbars
+    functions:
+      - expense
 
 functions:
-  app:
-    handler: index.handler
+  expense:
+    description: takes an expense as json and converts it to a pdf
+    memorySize: 1536
+    timeout: 10
+    handler: src/handlers/expense.handler
     events:
-      - http: ANY /
-      - http: 'ANY {proxy+}'
+      - http:
+          path: expense
+          method: get
+
+resources:
+  Resources:
+    ApiGatewayRestApi:
+      Properties:
+        BinaryMediaTypes:
+          - "*/*"

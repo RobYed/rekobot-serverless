@@ -49,5 +49,6 @@ typings/
 
 # serverless files
 /.serverless
+/.build
 
 
