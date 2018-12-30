@@ -1,0 +1,27 @@
+{
+    "expense": {
+        "id": 99,
+        "created": 1545289938030,
+        "employee": {
+            "id": 2,
+            "name": "Max Mustermann",
+            "address": {
+                "id": 1234,
+                "street": "Hauptstraße",
+                "houseNumber": "123",
+                "city": "Musterstadt",
+                "zipCode": "12345"
+            },
+            "bankAccount": {
+                "id": 1234,
+                "bankName": "Deutsche Kreditbank AG",
+                "iban": "DE1234567891011121314",
+                "bic": "ABCDEFG1001"
+            }
+        }
+    },
+    "value": "TEST1234",
+    "list": [
+        { "title": "entry1", "title": "entry2" }
+    ]
+}

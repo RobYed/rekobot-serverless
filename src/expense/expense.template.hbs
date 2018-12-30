@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="node_modules/gutenberg-css/dist/gutenberg.min.css">
+    </head>
+    <body>
+        <h1>Reisekostenabrechnung Inland</h1>
+        <dl>
+            <dt>Beleg Nr.</dt>
+            <dd>{{ expense.id }}</dd>
+            <dt>Datum</dt>
+            <dd>{{ expense.created }}</dd>
+            <dt>Monat</dt>
+            <dd>{{ value }}</dd>
+        </dl>
+
+        <h2>Mitarbeiter</h2>
+        <dl>
+            <dt>Pers. Nr</dt>
+            <dd>{{ expense.employee.id }}</dd>
+            <dt>Vor- und Nachname</dt>
+            <dd>{{ expense.employee.name }}</dd>
+            <dt>Wohnort</dt>
+            <dd>
+                {{ expense.employee.address.street }} {{ expense.employee.address.houseNumber }},
+                {{ expense.employee.address.zipCode }} {{ expense.employee.address.city }}
+            </dd>
+        </dl>
+        <h3>Bankverbindung</h3>
+        <dl>
+            <dt>Bankname</dt>
+            <dd>{{ expense.employee.bankAccount.bankName }}</dd>
+            <dt>IBAN</dt>
+            <dd>{{ expense.employee.bankAccount.iban }}</dd>
+            <dt>BIC</dt>
+            <dd>{{ expense.employee.bankAccount.bic }}</dd>
+        </dl>
+
+        <h2>Angaben zur Reise</h2>
+        <dl>
+            <dt>Reiseweg</dt>
+            <dd>{{ value }}</dd>
+            <dt>Besuchte Stellen</dt>
+            <dd>{{ value }}</dd>
+            <dt>Begründung</dt>
+            <dd>{{ value }}</dd>
+            <dt>Abfahrt</dt>
+            <dd>{{ value }}</dd>
+            <dt>Rückkehr</dt>
+            <dd>{{ value }}</dd>
+            <dt>Benutztes Verkehrsmittel</dt>
+            <dd>{{ value }}</dd>
+        </dl>
+
+        <h2>[A] Fahrtkosten</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Euro</th>
+                    <th>Mwst.</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each list}}
+                <tr>
+                    <td>{{ title }}</td>
+                    <td>100</td>
+                    <td>19%</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <h2>[B] Vepflegungskosten Pauschale</h2>
+
+        <h2>[C] Übernachtungskosten</h2>
+
+        <h2>[D] Sachbezugswert</h2>
+
+        <h2>[E] Einzelbelege Bewirtung (mit Fremden)</h2>
+
+        <h2>Auszuzahlender Betrag</h2>
+        {{ value }}
+
+        <h3>Für die Richtigkeit</h3>
+        {{ value }}
+        <br/>
+        <br/>
+        ____________________
+        Datum, Unterschrift
+    </body>
+</html>

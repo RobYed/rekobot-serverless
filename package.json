@@ -27,8 +27,11 @@
   },
   "homepage": "https://github.com/RobYed/rekobot-serverless#readme",
   "dependencies": {
-    "chrome-remote-interface": "0.25.3",
-    "serverless-http": "^1.8.0"
+    "gutenberg-css": "^0.4.7",
+    "handlebars": "^4.0.12",
+    "html-pdf-chrome": "^0.5.0",
+    "serverless-http": "^1.8.0",
+    "web-resource-inliner": "^4.2.1"
   },
   "devDependencies": {
     "serverless": "1.35.1",
