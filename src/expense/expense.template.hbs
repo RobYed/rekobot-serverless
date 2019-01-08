@@ -40,56 +40,110 @@
         </dl>
 
         <h2>Angaben zur Reise</h2>
+
+        <h3>Projekt</h3>
         <dl>
-            <dt>Reiseweg</dt>
-            <dd>{{ value }}</dd>
             <dt>Besuchte Stellen</dt>
-            <dd>{{ value }}</dd>
+            <dd>{{ expense.occasion.company }}, {{ expense.occasion.location.city }}</dd>
             <dt>Begründung</dt>
-            <dd>{{ value }}</dd>
-            <dt>Abfahrt</dt>
-            <dd>{{ value }}</dd>
-            <dt>Rückkehr</dt>
-            <dd>{{ value }}</dd>
-            <dt>Benutztes Verkehrsmittel</dt>
-            <dd>{{ value }}</dd>
+            <dd>{{ expense.occasion.name }}: {{ expense.occasion.description }}</dd>
         </dl>
+        <br/>
 
         <h2>[A] Fahrtkosten</h2>
+        {{#each expense.routes}}
+        <dl>
+            <dt>Start</dt>
+            <dd>{{ from }}, {{ start }}</dd>
+            <dt>Ankunft</dt>
+            <dd>{{ to }}, {{ end }}</dd>
+            <dt>Benutztes Verkehrsmittel</dt>
+            <dd>{{ transportation }}</dd>
+            <dt>Fahrtkosten</dt>
+            <dd>{{ totalCost.netCost }} Euro</dd>
+        </dl>
+        {{/each}}
+        <br/>
+
+        <h2>[B] Vepflegungskosten Pauschale</h2>
+
         <table>
             <thead>
                 <tr>
                     <th></th>
-                    <th>Euro</th>
-                    <th>Mwst.</th>
+                    <th>Tage</th>
+                    <th>gesetzl. Sätze</th>
+                    <th>Betrag</th>
                 </tr>
             </thead>
             <tbody>
-                {{#each list}}
+                {{#each expense.costs}}
+                {{#equals type "Catering_WorkDay"}}
                 <tr>
-                    <td>{{ title }}</td>
-                    <td>100</td>
-                    <td>19%</td>
+                    <td>{{ unitCost.name }}</td>
+                    <td>{{ unitCount }}</td>
+                    <td>{{ unitCost.value }} {{ unitCost.unit.name}}</td>
+                    <td>{{#multiply unitCount unitCost.value }}{{/multiply}} {{ unitCost.unit.name}}</td>
                 </tr>
+                {{/equals}}
+                {{#equals type "Catering_FullDay"}}
+                <tr>
+                    <td>{{ unitCost.name }}</td>
+                    <td>{{ unitCount }}</td>
+                    <td>{{ unitCost.value }} {{ unitCost.unit.name}}</td>
+                    <td>{{#multiply unitCount unitCost.value }}{{/multiply}} {{ unitCost.unit.name}}</td>
+                </tr>
+                {{/equals}}
+                {{#equals type "Catering_WithholdingBreakfast"}}
+                <tr>
+                    <td>{{ unitCost.name }}</td>
+                    <td>{{ unitCount }}</td>
+                    <td>{{ unitCost.value }} {{ unitCost.unit.name}}</td>
+                    <td>{{#multiply unitCount unitCost.value }}{{/multiply}} {{ unitCost.unit.name}}</td>
+                </tr>
+                {{/equals}}
                 {{/each}}
             </tbody>
         </table>
-
-        <h2>[B] Vepflegungskosten Pauschale</h2>
+        <br/>
 
         <h2>[C] Übernachtungskosten</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Betrag</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each expense.costs}}
+                {{#equals type "Accomodation_Total"}}
+                <tr>
+                    <td>Einzelnachweis</td>
+                    <td>{{ netCost }} Euro</td>
+                </tr>
+                {{/equals}}
+                {{/each}}
+            </tbody>
+        </table>
+        <br/>
 
         <h2>[D] Sachbezugswert</h2>
+        - keine -
+        <br/><br/>
 
         <h2>[E] Einzelbelege Bewirtung (mit Fremden)</h2>
+        - keine -
+        <br/><br/>
 
         <h2>Auszuzahlender Betrag</h2>
-        {{ value }}
+        0
+        <br/><br/>
 
         <h3>Für die Richtigkeit</h3>
-        {{ value }}
-        <br/>
-        <br/>
+        <!-- TODO: add signature
+        <img src="signature.png" width="123" height="102" />
+        -->
         ____________________
         Datum, Unterschrift
     </body>

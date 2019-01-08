@@ -4,6 +4,17 @@ const readFile = util.promisify(require('fs').readFile);
 const inlineHtml = util.promisify(require('web-resource-inliner').html);
 const handlebars = require('handlebars');
 
+handlebars.registerHelper('equals', function(v1, v2, options) {
+    if (v1 === v2) {
+      return options.fn(this);
+    }
+    return options.inverse(this);
+});
+
+handlebars.registerHelper('multiply', function(v1, v2, options) {
+    return v1 * v2;
+});
+
 class ExpenseHtmlFactory {
 
     constructor() {

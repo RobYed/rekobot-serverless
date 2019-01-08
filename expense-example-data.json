@@ -1,7 +1,8 @@
 {
     "expense": {
-        "id": 99,
+        "id": 97,
         "created": 1545289938030,
+        "submitted": 1545299938030,
         "employee": {
             "id": 2,
             "name": "Max Mustermann",
@@ -17,11 +18,144 @@
                 "bankName": "Deutsche Kreditbank AG",
                 "iban": "DE1234567891011121314",
                 "bic": "ABCDEFG1001"
+            },
+            "signature": "url or base64 string"
+        },
+        "occasion": {
+            "id": 1,
+            "description": "some short description",
+            "notes": "",
+            "name": "Example Project",
+            "company": "Example Company",
+            "location": {
+                "id": 22,
+                "city": "Berlin",
+                "street": "Skalitzer Straße",
+                "houseNumber": "36",
+                "zipCode": "12345"
             }
-        }
-    },
-    "value": "TEST1234",
-    "list": [
-        { "title": "entry1", "title": "entry2" }
-    ]
+        },
+        "routes": [
+            {
+                "id": 123,
+                "from": "Musterstadt",
+                "to": "Berlin",
+                "start": 1545269938030,
+                "end": 1545279938030,
+                "transportation": "Train",
+                "totalCost": {
+                    "id": 678,
+                    "type": "Travel_SingleRoute",
+                    "netCost": 85.14,
+                    "tax": {
+                        "id": 11,
+                        "name": "MwSt",
+                        "validUntil": 1585289938030,
+                        "value": 19,
+                        "unit": {
+                            "id": 9,
+                            "name": "percent",
+                            "symbol": "%"
+                        }
+                    },
+                    "mutable": false
+                }
+            },
+            {
+                "id": 123,
+                "from": "Berlin",
+                "to": "Musterstadt",
+                "start": 1545289938030,
+                "end": 1545289938030,
+                "transportation": "Train",
+                "totalCost": {
+                    "id": 678,
+                    "type": "Travel_SingleRoute",
+                    "netCost": 66.89,
+                    "tax": {
+                        "id": 11,
+                        "name": "MwSt",
+                        "validUntil": 1585289938030,
+                        "value": 19,
+                        "unit": {
+                            "id": 9,
+                            "name": "percent",
+                            "symbol": "%"
+                        }
+                    },
+                    "mutable": false
+                }
+            }
+        ],
+        "costs": [
+            {
+                "id": 678,
+                "type": "Catering_WorkDay",
+                "unitCount": 2,
+                "unitCost": {
+                    "id": 13,
+                    "name": "Verpflegungskosten Pauschale ab 8 Stunden",
+                    "validUntil": 1585289938030,
+                    "value": 12,
+                    "unit": {
+                        "id": 8,
+                        "name": "Euro",
+                        "symbol": "€"
+                    }
+                },
+                "mutable": false
+            },
+            {
+                "id": 678,
+                "type": "Catering_FullDay",
+                "unitCount": 1,
+                "unitCost": {
+                    "id": 14,
+                    "name": "Verpflegungskosten Pauschale ab 24 Stunden",
+                    "validUntil": 1585289938030,
+                    "value": 24,
+                    "unit": {
+                        "id": 8,
+                        "name": "Euro",
+                        "symbol": "€"
+                    }
+                },
+                "mutable": false
+            },
+            {
+                "id": 678,
+                "type": "Catering_WithholdingBreakfast",
+                "unitCount": 2,
+                "unitCost": {
+                    "id": 14,
+                    "name": "Pausch. Einbehalt für Frühstück bei Berechnung Übernachtung inkl. Frühstück",
+                    "validUntil": 1585289938030,
+                    "value": 4.80,
+                    "unit": {
+                        "id": 8,
+                        "name": "Euro",
+                        "symbol": "€"
+                    }
+                },
+                "mutable": false
+            },
+            {
+                "id": 678,
+                "type": "Accomodation_Total",
+                "netCost": 256.85,
+                "tax": {
+                    "id": 11,
+                    "name": "MwSt",
+                    "validUntil": 1585289938030,
+                    "value": 19,
+                    "unit": {
+                        "id": 9,
+                        "name": "percent",
+                        "symbol": "%"
+                    }
+                },
+                "mutable": false
+            }
+        ]
+    }
 }

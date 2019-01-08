@@ -21,8 +21,7 @@ In order to avoid unnecessary charges, you should remove all unused AWS ressourc
 
 ## TODO
 
-* full data model usage
-* data conversions
+* data tranformations
 * template styling
 * input validation
 * signing the pdf
